@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% include "../widgets/metadata.html" %}
+
+
+
+  <body>
+  
+  <div class="site-wrap">
+    {% include "../widgets/header.html" %}
+
+    {% block content %}
+
+       
+
+    {% endblock %}
+
+    
+
+   
+    {% include "../widgets/footer.html" %}
+
+
+  </div>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <script>
+    function addCart(id_pr,id_user){
+      num = $("#number").val();
+      alert("successfully added to cart");
+      $.post('/home/addcart',{"id_pr":id_pr,"id_user":id_user,"num":num,"csrfmiddlewaretoken":'{{csrf_token}}'}, function(data){
+      
+    });
+  }
+  function editQuantity_1(id_citem,id_edit){
+
+    $.post('/home/editquantity_1',{"id_citem":id_citem,"id_edit":id_edit,"csrfmiddlewaretoken":'{{csrf_token}}'}, function(data){
+      
+    });
+  }
+
+  </script>
+    
+  </body>
+</html>
